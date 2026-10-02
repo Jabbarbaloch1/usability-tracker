@@ -1,0 +1,45 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><link rel="stylesheet" href="ui.css">
+<style>
+body{width:360px;background:#fff}
+header{display:flex;align-items:center;gap:10px;padding:14px 16px;border-bottom:1px solid var(--line)}
+header div{flex:1;min-width:0}header b{display:block;font-size:15px}
+#host{color:var(--mute);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;display:block}
+.hero{display:flex;align-items:center;gap:16px;padding:18px 16px;border-bottom:1px solid var(--line)}
+.ring{position:relative;width:104px;height:104px;flex:none}
+.ring svg{transform:rotate(-90deg)}
+.ring circle{fill:none;stroke-width:9;stroke-linecap:round}
+.ring .bg{stroke:#E6EAF1}.ring .fg{transition:stroke-dashoffset .5s,stroke .3s}
+.ring b{position:absolute;inset:0;display:grid;place-items:center;font-size:30px;letter-spacing:-.02em}
+.hero h1{font-size:17px}.hero p{color:var(--mute);margin-top:4px;font-size:13px}
+.grid{display:grid;grid-template-columns:1fr 1fr}
+.m{padding:12px 16px;border-bottom:1px solid var(--line)}.m:nth-child(odd){border-right:1px solid var(--line)}
+.m span{display:block;color:var(--mute);font-size:12px}.m b{font-size:20px;letter-spacing:-.01em}
+.m small{display:block;color:var(--mute);font-size:11px;margin-top:1px}
+.acts{display:flex;gap:8px;padding:14px 16px}.acts .btn{flex:1}
+.foot{padding:0 16px 14px;display:flex;justify-content:space-between;color:var(--mute);font-size:12px}
+#empty{padding:32px 24px;text-align:center;color:var(--mute)}
+</style>
+<body>
+<header>
+  <svg class="mark" viewBox="0 0 28 28"><rect width="28" height="28" rx="8" fill="#2447F5"/><path d="M9 7v14l4-3.6 2.8 5.4 2.6-1.4-2.7-5.2H20z" fill="#fff"/><circle cx="20" cy="9" r="2.6" fill="#F0713F"/></svg>
+  <div><b>Friction</b><span id="host">Reading this page</span></div>
+  <label class="sw" title="Track usability on all sites"><input type="checkbox" id="on"><i></i></label>
+</header>
+<div id="empty" hidden>This page can't be measured. Open a regular website and Friction starts tracking automatically.</div>
+<main id="main">
+  <section class="hero">
+    <div class="ring"><svg width="104" height="104" viewBox="0 0 104 104"><circle class="bg" cx="52" cy="52" r="44"/><circle class="fg" id="fg" cx="52" cy="52" r="44" stroke-dasharray="276.46" stroke-dashoffset="276.46"/></svg><b id="score">–</b></div>
+    <div><h1 id="grade">Measuring</h1><p id="hint">Interact with the page to build a reading.</p></div>
+  </section>
+  <section class="grid">
+    <div class="m"><span>Rage clicks</span><b id="rage">0</b><small>Visibility of system status</small></div>
+    <div class="m"><span>Dead clicks</span><b id="dead">0</b><small>Weak signifiers</small></div>
+    <div class="m"><span>Errors</span><b id="errors">0</b><small>Error prevention</small></div>
+    <div class="m"><span>Scroll U-turns</span><b id="uturns">0</b><small>Information scent</small></div>
+    <div class="m"><span>Fitts difficulty</span><b id="fitts">–</b><small>bits per click, lower is easier</small></div>
+    <div class="m"><span>Small targets</span><b id="small">0</b><small>Under 24 px (WCAG 2.5.8)</small></div>
+  </section>
+  <div class="acts"><button class="btn" id="heat">Show click heatmap</button><button class="btn ghost" id="dash">Open dashboard</button></div>
+  <div class="foot"><label class="sw"><input type="checkbox" id="pause"><i></i>Pause on this site</label><span id="time"></span></div>
+</main>
+<script src="shared.js"></script><script src="popup.js"></script>

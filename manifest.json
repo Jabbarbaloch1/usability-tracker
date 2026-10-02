@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "Friction - Usability Tracker",
+  "version": "1.0.0",
+  "description": "Measure real usability friction on any site: rage clicks, dead clicks, Fitts' law load, scroll U-turns, errors, and click heatmaps. All data stays on your device.",
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": ["<all_urls>"],
+  "background": { "service_worker": "background.js" },
+  "content_scripts": [{ "matches": ["<all_urls>"], "js": ["shared.js", "content.js"], "run_at": "document_idle" }],
+  "action": { "default_popup": "popup.html", "default_title": "Friction" },
+  "options_page": "dashboard.html",
+  "icons": { "16": "icons/16.png", "32": "icons/32.png", "48": "icons/48.png", "128": "icons/128.png" }
+}

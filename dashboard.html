@@ -1,0 +1,32 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><title>Friction dashboard</title><meta name="viewport" content="width=device-width,initial-scale=1"><link rel="stylesheet" href="ui.css">
+<style>
+.top{display:flex;flex-wrap:wrap;gap:12px;align-items:center;max-width:1080px;margin:0 auto;padding:22px 20px 14px}
+.brand{display:flex;align-items:center;gap:10px;flex:1;min-width:200px}.brand b{font-size:20px;letter-spacing:-.02em}.brand span{color:var(--mute)}
+.ctl{display:flex;flex-wrap:wrap;gap:8px}
+.sheet{max-width:1080px;margin:0 auto 40px;background:var(--sheet);border-radius:18px;overflow:hidden;box-shadow:0 1px 2px rgba(19,26,43,.06)}
+.sheet>section{padding:22px 24px;border-bottom:1px solid var(--line)}.sheet>section:last-child{border:0}
+h2{font-size:15px;margin-bottom:14px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;padding:0!important}
+.kpis div{padding:20px 24px;border-right:1px solid var(--line)}.kpis div:last-child{border:0}
+.kpis span{display:block;color:var(--mute);font-size:12px}.kpis b{font-size:30px;letter-spacing:-.02em}
+.two{display:grid;grid-template-columns:2fr 1fr;gap:32px}@media(max-width:800px){.two{grid-template-columns:1fr}}
+svg{width:100%;height:auto;display:block}
+.bar{display:grid;grid-template-columns:70px 1fr 44px;gap:10px;align-items:center;margin:9px 0;color:var(--mute);font-size:13px}
+.bar i{display:block;height:10px;border-radius:99px;background:#E6EAF1}.bar i u{display:block;height:100%;border-radius:99px;background:var(--blue)}
+.f{display:grid;grid-template-columns:8px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}.f:first-of-type{border:0;padding-top:0}
+.f s{border-radius:99px;display:block}.f h3{font-size:14px}.f p{color:var(--mute);margin-top:3px}.f em{font-style:normal;color:var(--blue);font-weight:600}
+.scroll{overflow-x:auto}table{border-collapse:collapse;width:100%;min-width:640px}
+th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--line);white-space:nowrap}th{color:var(--mute);font-weight:500;font-size:12px}
+td:first-child{max-width:340px;overflow:hidden;text-overflow:ellipsis}
+.pill{display:inline-block;min-width:36px;text-align:center;padding:2px 9px;border-radius:99px;color:#fff;font-weight:600}
+.empty{padding:60px 24px;text-align:center;color:var(--mute)}
+</style>
+<body>
+<header class="top">
+  <div class="brand"><svg class="mark" viewBox="0 0 28 28"><rect width="28" height="28" rx="8" fill="#2447F5"/><path d="M9 7v14l4-3.6 2.8 5.4 2.6-1.4-2.7-5.2H20z" fill="#fff"/><circle cx="20" cy="9" r="2.6" fill="#F0713F"/></svg><b>Friction</b><span>Usability report</span></div>
+  <div class="ctl"><select id="site" aria-label="Site"></select>
+  <select id="range" aria-label="Time range"><option value="1">Last 24 hours</option><option value="7">Last 7 days</option><option value="0" selected>All time</option></select>
+  <button class="btn ghost" id="csv">Export CSV</button><button class="btn ghost" id="json">Export JSON</button><button class="btn ghost danger" id="clear">Clear data</button></div>
+</header>
+<main class="sheet" id="sheet"></main>
+<script src="shared.js"></script><script src="dashboard.js"></script>
